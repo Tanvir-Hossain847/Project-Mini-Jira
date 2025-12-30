@@ -11,15 +11,16 @@ import {
   NavbarLink,
   NavbarToggle,
 } from "flowbite-react";
+import Logo from '../Logo/Logo';
+import { Link } from 'react-router';
 
 const Header = () => {
     return (
         <div>
             <Navbar fluid rounded>
-      <NavbarBrand href="https://flowbite-react.com">
-        <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
-      </NavbarBrand>
+      <div className="">
+        <Link to={'/'}><Logo></Logo></Link>
+      </div>
       <div className="flex md:order-2">
         <Dropdown
           arrowIcon={false}
