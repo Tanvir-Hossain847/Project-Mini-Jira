@@ -2,3 +2,6 @@
 @import "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
 @plugin "daisyui";
+@plugin "daisyui" {
+  themes: dark --default;
+ }

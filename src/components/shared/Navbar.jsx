@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 import {
   Avatar,
   Dropdown,
@@ -13,42 +13,56 @@ import {
 } from "flowbite-react";
 import Logo from '../Logo/Logo';
 import { Link } from 'react-router';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Header = () => {
+  const {user} = use(AuthContext)
+
     return (
         <div>
-            <Navbar fluid rounded>
+            <Navbar className='bg-base-300' fluid rounded>
       <div className="">
         <Link to={'/'}><Logo></Logo></Link>
       </div>
       <div className="flex md:order-2">
-        <Dropdown
+        {
+          user? <>
+          <Dropdown
           arrowIcon={false}
           inline
           label={
-            <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+            <Avatar alt="User settings" img={user.photoURL} rounded />
           }
         >
           <DropdownHeader>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+            <span className="block text-sm">{user.displayName}</span>
+            <span className="block truncate text-sm font-medium">{user.email}</span>
           </DropdownHeader>
-          <DropdownItem>Dashboard</DropdownItem>
-          <DropdownItem>Settings</DropdownItem>
-          <DropdownItem>Earnings</DropdownItem>
+          <DropdownItem className='text-white'>Dashboard</DropdownItem>
+          <DropdownItem className='text-white'>Settings</DropdownItem>
+          <DropdownItem className='text-white'>Earnings</DropdownItem>
           <DropdownDivider />
-          <DropdownItem>Sign out</DropdownItem>
+          <DropdownItem className='text-white'>Sign out</DropdownItem>
         </Dropdown>
         <NavbarToggle />
+          </> 
+          :
+          <>
+          <div className="flex gap-4">
+            <Link to={'/auth/login'}><button className='btn bg-emerald-600'>Login</button></Link>
+            <Link to={'/auth/registration'}><button className='btn btn-neutral'>Registration</button></Link>
+          </div>
+          </>
+        }
       </div>
       <NavbarCollapse>
         <NavbarLink href="#" active>
           Home
         </NavbarLink>
-        <NavbarLink href="#">About</NavbarLink>
-        <NavbarLink href="#">Services</NavbarLink>
-        <NavbarLink href="#">Pricing</NavbarLink>
-        <NavbarLink href="#">Contact</NavbarLink>
+        <NavbarLink className='text-white' href="#">About</NavbarLink>
+        <NavbarLink className='text-white' href="#">Services</NavbarLink>
+        <NavbarLink className='text-white' href="#">Pricing</NavbarLink>
+        <NavbarLink className='text-white' href="#">Contact</NavbarLink>
       </NavbarCollapse>
     </Navbar>
         </div>
