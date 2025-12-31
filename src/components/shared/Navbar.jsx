@@ -16,7 +16,15 @@ import { Link } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 
 const Header = () => {
-  const {user} = use(AuthContext)
+  const {user, signOutUser} = use(AuthContext)
+
+  const handleSignOut = async () => {
+    try {
+      await signOutUser();
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
+  };
 
     return (
         <div>
@@ -42,7 +50,7 @@ const Header = () => {
           <DropdownItem className='text-white'>Settings</DropdownItem>
           <DropdownItem className='text-white'>Earnings</DropdownItem>
           <DropdownDivider />
-          <DropdownItem className='text-white'>Sign out</DropdownItem>
+          <DropdownItem className='text-white' onClick={handleSignOut}>Sign out</DropdownItem>
         </Dropdown>
         <NavbarToggle />
           </> 

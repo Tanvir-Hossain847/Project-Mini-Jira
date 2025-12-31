@@ -2,6 +2,7 @@ import React from 'react';
 import Features from '../../components/Features';
 import { Link } from 'react-router';
 import { LucideArrowLeft } from 'lucide-react';
+import HowItWorks from '../../components/HowItWorks';
 
 const Home = () => {
     return (
@@ -23,10 +24,12 @@ const Home = () => {
             <div className="grid grid-rows-12 gap-5">
                 <div className="row-span-5">
                     <div className="mt-5">
-                <img className='rounded-xl h-80' src="https://i.ibb.co.com/N2Zf856M/Screenshot-2025-12-30-214356.png" alt="" />
+                <img className='rounded-xl h-85' src="https://i.ibb.co.com/N2Zf856M/Screenshot-2025-12-30-214356.png" alt="" />
             </div>
                 </div>
-                <div className="bg-primary row-span-7"><h1>secondery</h1></div>
+                <div className="bg-emerald-600 row-span-7 rounded-xl">
+                    <HowItWorks></HowItWorks>
+                </div>
             </div>
             </div>
         </div>
